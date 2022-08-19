@@ -69,9 +69,11 @@ object WebsocketServer {
 
   def main(args: Array[String]): Unit = {
     val bind = Http().newServerAt("127.0.0.1", 8080).withSettings(defaultSettings).bind(route)
-    for (i <- 1 to 9999999) {
-      list.foreach(actorRef => actorRef ! TextMessage(s"$i"))
+    while (true){
+      val s = StdIn.readLine()
+      list.foreach(actorRef => actorRef ! TextMessage(s"$s"))
     }
+
 
 
     import system.dispatcher // for the future transformations
