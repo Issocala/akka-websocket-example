@@ -1,2 +1,5 @@
 # akka-websocket-example
-akka-websocket-example include scala and java, server and client
+akka-websocket-example 
+include scala and java 
+server and client
+actor
