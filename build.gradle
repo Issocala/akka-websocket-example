@@ -1,0 +1,42 @@
+plugins {
+    // Apply the scala Plugin to add support for Scala.
+    id 'scala'
+
+    // Apply the java-library plugin for API and implementation separation.
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+apply from: 'config.gradle'
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        scala { srcDirs = ["src/main/scala", "src/main/java"] }
+    }
+}
+dependencies {
+    implementation platform("com.typesafe.akka:akka-http-bom_${libraryVersion.scalaMain}:10.2.9")
+
+    implementation "com.typesafe.akka:akka-actor-typed_${libraryVersion.scalaMain}:${libraryVersion.akka}"
+    implementation "com.typesafe.akka:akka-stream_${libraryVersion.scalaMain}:${libraryVersion.akka}"
+    implementation "com.typesafe.akka:akka-http_${libraryVersion.scalaMain}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.0"
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation "mysql:mysql-connector-java:5.1.25"
+    implementation "com.typesafe.slick:slick_${libraryVersion.scalaMain}:${libraryVersion.slick}"
+    implementation "com.typesafe.slick:slick-hikaricp_${libraryVersion.scalaMain}:${libraryVersion.slick}"
+    implementation "com.thesamet.scalapb:scalapb-runtime_${libraryVersion.scalaMain}:${libraryVersion.scalapb}"
+
+}
+
+test {
+    useJUnitPlatform()
+}

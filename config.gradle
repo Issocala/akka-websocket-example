@@ -1,0 +1,14 @@
+
+ext{
+    libraryVersion = [
+            akka : "2.6.19",
+            slick : "3.3.3",
+            alpakka : "3.0.3",
+//            scala : "2.12.12",
+//            scalaMain : "2.12",
+            scala : "2.13.7",
+            scalaMain : "2.13",
+            scalapb : "0.10.11",
+            mobius : "0.0.2"
+    ]
+}
